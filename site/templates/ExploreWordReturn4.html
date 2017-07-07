@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link
+        href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.css"
+        rel="stylesheet" type="text/css">
+    <link
+        href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.css"
+        rel="stylesheet" type="text/css">
+    
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.js"></script>
+   
+     <title>The Rap Thesaurus</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{url_for('static',filename = 'bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{url_for('static',filename = 'simple-sidebar.css')}}" rel="stylesheet">
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      
+      <style>
+      body {
+        font-family: 'Roboto Condensed', sans-serif;
+      }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        The Rap Thesaurus
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Explore Words</a>
+                </li>
+                <li>
+                    <a href="#">Explore Artists</a>
+                </li>
+                <li>
+                    <a href="#">Ready to Rap?</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+           <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Explore Words</h1>
+                        <p></p>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <div class="input-group">
+                              <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="button">Go!</button>
+                              </span>
+                              <input type="text" class="form-control" placeholder="Search for...">
+                              <br/>
+                            </div>
+                          </div>
+                        </div>
+
+        
+                    </div>
+        
+                    <div class="col-lg-12">
+                        <br/>
+                        <h1><b>Random Word:</b> <span style="color:#3281D4;"><i>{{ rndwrd }} </i></span></h1>
+                        <h3>Related Words:
+                        <wordtags>
+                        {% block wordtags %}{% endblock %}
+                        </wordtags>
+                        </h3>
+                        <br/>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+
+</body>
+
+</html>

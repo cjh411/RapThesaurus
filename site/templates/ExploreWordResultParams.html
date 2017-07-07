@@ -1,0 +1,18 @@
+{% extends "ExploreWordResult.html" %}
+
+
+{% block wordtags %}
+    {% for word in syns %}
+    <span class="badge badge-default" style="font-size:110%">{{word}}</span>
+    {% endfor %}
+{% endblock %}
+
+{% block wordyear %}
+{{ script1|safe }}
+{{ div1|safe }}
+{% endblock %}
+
+{% block wordart %}
+{{ script2|safe }}
+{{ div2|safe }}
+{% endblock %}

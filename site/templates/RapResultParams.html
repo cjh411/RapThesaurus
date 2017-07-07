@@ -1,0 +1,9 @@
+{% extends "RapResult.html" %}
+
+
+{% block wordtags %}
+    {% for word in syns %}
+    <span class="badge badge-default" style="font-size:110%">{{word}}</span>
+    {% endfor %}
+{% endblock %}
+

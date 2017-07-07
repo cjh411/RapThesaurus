@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <link
+        href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.css"
+        rel="stylesheet" type="text/css">
+    <link
+        href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.css"
+        rel="stylesheet" type="text/css">
+    
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.js"></script>
+   
+     <title>The Rap Thesaurus</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{url_for('static',filename = 'bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{url_for('static',filename = 'simple-sidebar.css')}}" rel="stylesheet">
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      
+      <style>
+      body {
+        font-family: 'Roboto Condensed', sans-serif;
+      }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="{{ url_for('filters') }}">
+                        The Rap Thesaurus
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('filters') }}">Home</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('words') }}">Explore Words</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('artists') }}">Explore Artists</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('raps') }}">Spit A Verse</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+           <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                        <h1>Natural Language Processing With Swag</h1>
+                        <p>What started off as a project to learn more about language modling turned into a trove of really interesting data. 
+                            I scraped together a dataset of over hundreds of thousands of rap verses and created a rap language model. 
+                            The details aren't important, but the result is that each word is represented as a collection of numbers which can be used to determine relationships between words, and in this case, the artists using them.
+                            I'm going to try to update this website frequently with findings from the data, but I've put together a summary here to get started.</p>
+                        <p>Check out the two sections below to explore the lyrical similarity between artists, and the syntactical similarity between words. If you want to dig in more, check out the "Explore Words" and "Explore Artists" sections. 
+                            For the aspiring rappers among you, try your hand at "Spit a Verse" to see what rappers are most similar to your rap.</p>
+        
+        
+                    </div>
+        
+                    <div class="col-lg-12">
+                        <h1>Lyrically Unmatched</h1>
+                        <p>Every rapper likes to brag about their lyricism being leagues above their competition..</p>
+                        While we can't currently measure cleverness, it turns out that unless you're literally speaking a different language, you probably have a closely related lyrical peer. The only exception to this are E-40 and Mac-Dre, who are in their own little bubble (middle left). </p>
+                        <p>You can hover over the points on the graph below to see how rappers tend to cluster lyrically.</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <artgraph>
+                        {% block artgraph %}{% endblock %}
+                        </artgraph>
+                    </div>
+                    <div class="col-lg-12">
+                    <p> An interesting part of this graph is the the difference by time. 2010s rappers in purple are almost completely distinct from rappers in the 1980s and 1990s in pink and green, respectively.</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <h1>Topics & Word Similarity</h1>
+                        <p>Here's the same graph as above, but instead showing the similarity between the 1000 most common words. 
+                        I've identified a handful of rap common themes, which are colored accordingly, and you can see some pretty strong clustering here. In the top left corner you'll find that Drugs, Money, and Partying all ended up clustering pretty close to one another.</p>
+                    </div>
+                    <div class="col-lg-12">
+                        <wordscatter>
+                        {% block wordscatter %}{% endblock %}
+                        </wordscatter>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <!-- jQuery -->
+    <script src="{{url_for('static',filename ='jquery.js')}}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{url_for('static',filename = 'bootstrap.min.js')}}"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+</body>
+
+</html>
